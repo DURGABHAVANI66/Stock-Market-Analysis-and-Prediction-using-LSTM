@@ -45,7 +45,7 @@ df.tail(10)
 ```
 
 ## Descriptive Statistics of Data 
-``` python 
+``` python  
 AAPL.describe()
 ```
 
