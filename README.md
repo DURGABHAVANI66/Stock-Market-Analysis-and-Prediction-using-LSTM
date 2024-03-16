@@ -1,1 +1,1 @@
-# Stock-Market-Analysis-and-Prediction-using-LSTM
+# Stock Market Analysis and Prediction using LSTM
