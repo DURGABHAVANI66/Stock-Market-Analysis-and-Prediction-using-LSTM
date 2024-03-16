@@ -139,13 +139,30 @@ MSFT['Daily Return'].plot(ax=axes[1,0], legend=True, linestyle='--', marker='o')
 axes[1,0].set_title('MICROSOFT')
 
 AMZN['Daily Return'].plot(ax=axes[1,1], legend=True, linestyle='--', marker='o')
-axes[1,1].set_title('AMAZON')
+axes[1,1  ].set_title('AMAZON')
 
 fig.tight_layout()
 
+plt.figure(figsize=(12, 9))
 
+for i, company in enumerate(company_list, 1):
+    plt.subplot(2, 2, i)
+    company['Daily Return'].hist(bins=50)
+    plt.xlabel('Daily Return')
+    plt.ylabel('Counts')
+    plt.title(f'{company_name[i - 1]}')
+    
+plt.tight_layout()
 ```
 
+## 4. What was the correlation between different stocks closing prices?
+``` python
+closing_df = pdr.get_data_yahoo(tech_list, start=start, end=end)['Adj Close']
+
+# Make a new tech returns DataFrame
+tech_rets = closing_df.pct_change()
+tech_rets.head()
+```
 
 
 
