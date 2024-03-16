@@ -44,6 +44,11 @@ df = pd.concat(company_list, axis=0)
 df.tail(10)
 ```
 
+##Descriptive Statistics of Data 
+```AAPL.describe()
+```
+
+
 
 
 
