@@ -161,6 +161,7 @@ AAPL.describe()
 
 
 
+
 ## Summary
 
 In this notebook, you discovered and explored stock data.
