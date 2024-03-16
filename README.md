@@ -209,6 +209,25 @@ fig.tight_layout()
 
 
 
+## By investing in a specific stock, we are exposing ourselves to a potential level of risk.
+
+There are many ways we can quantify risk, one of the most basic ways using the information we've gathered on daily percentage returns is by comparing the expected return with the standard deviation of the daily returns.
+
+``` python
+rets = tech_rets.dropna()
+
+area = np.pi * 20
+
+plt.figure(figsize=(10, 8))
+plt.scatter(rets.mean(), rets.std(), s=area)
+plt.xlabel('Expected return')
+plt.ylabel('Risk')
+
+for label, x, y in zip(rets.columns, rets.mean(), rets.std()):
+    plt.annotate(label, xy=(x, y), xytext=(50, 50), textcoords='offset points', ha='right', va='bottom', 
+                 arrowprops=dict(arrowstyle='-', color='blue', connectionstyle='arc3,rad=-0.3'))
+```
+
 
 
 
