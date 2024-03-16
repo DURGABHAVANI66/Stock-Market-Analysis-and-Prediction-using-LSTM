@@ -204,9 +204,90 @@ fig.tight_layout()
 
 
 
+## 4.Corelation between different stocks closing prices 
+
+Correlation is a statistic that measures the degree to which two variables move in relation to each other which has a value that must fall between -1.0 and +1.0. Correlation measures association, but doesn’t show if x causes y or vice versa — or if the association is caused by a third factor[1].
+
+Now what if we wanted to analyze the returns of all the stocks in our list? Let's go ahead and build a DataFrame with all the ['Close'] columns for each of the stocks dataframes.
+
+``` python
+# Grab all the closing prices for the tech stock list into one DataFrame
+
+closing_df = pdr.get_data_yahoo(tech_list, start=start, end=end)['Adj Close']
+
+# Make a new tech returns DataFrame
+tech_rets = closing_df.pct_change()
+tech_rets.head()
+```
+
+Now we can compare the daily percentage return of two stocks to check how correlated. First let's see a sotck compared to itself.
+
+``` python
+# Comparing Google to itself should show a perfectly linear relationship
+sns.jointplot(x='GOOG', y='GOOG', data=tech_rets, kind='scatter', color='seagreen')
+```
+
+``` python
+# We'll use joinplot to compare the daily returns of Google and Microsoft
+sns.jointplot(x='GOOG', y='MSFT', data=tech_rets, kind='scatter')
+```
+So now we can see that if two stocks are perfectly (and positivley) correlated with each other a linear relationship bewteen its daily return values should occur.
+
+Seaborn and pandas make it very easy to repeat this comparison analysis for every possible combination of stocks in our technology stock ticker list. We can use sns.pairplot() to automatically create this plot
+``` python
+# We can simply call pairplot on our DataFrame for an automatic visual analysis 
+# of all the comparisons
+
+sns.pairplot(tech_rets, kind='reg')
+```
+Above we can see all the relationships on daily returns between all the stocks. A quick glance shows an interesting correlation between Google and Amazon daily returns. It might be interesting to investigate that individual comaprison.
+
+While the simplicity of just calling sns.pairplot() is fantastic we can also use sns.PairGrid() for full control of the figure, including what kind of plots go in the diagonal, the upper triangle, and the lower triangle. Below is an example of utilizing the full power of seaborn to achieve this result
+
+``` python
+# Set up our figure by naming it returns_fig, call PairPLot on the DataFrame
+return_fig = sns.PairGrid(tech_rets.dropna())
+
+# Using map_upper we can specify what the upper triangle will look like.
+return_fig.map_upper(plt.scatter, color='purple')
+
+# We can also define the lower triangle in the figure, inclufing the plot type (kde) 
+# or the color map (BluePurple)
+return_fig.map_lower(sns.kdeplot, cmap='cool_d')
+
+# Finally we'll define the diagonal as a series of histogram plots of the daily return
+return_fig.map_diag(plt.hist, bins=30)
+```
+
+``` python
+# Set up our figure by naming it returns_fig, call PairPLot on the DataFrame
+returns_fig = sns.PairGrid(closing_df)
+
+# Using map_upper we can specify what the upper triangle will look like.
+returns_fig.map_upper(plt.scatter,color='purple')
+
+# We can also define the lower triangle in the figure, inclufing the plot type (kde) or the color map (BluePurple)
+returns_fig.map_lower(sns.kdeplot,cmap='cool_d')
+
+# Finally we'll define the diagonal as a series of histogram plots of the daily return
+returns_fig.map_diag(plt.hist,bins=30)
+```
+Finally, we could also do a correlation plot, to get actual numerical values for the correlation between the stocks' daily return values. By comparing the closing prices, we see an interesting relationship between Microsoft and Apple.
 
 
+``` python
+plt.figure(figsize=(12, 10))
 
+plt.subplot(2, 2, 1)
+sns.heatmap(tech_rets.corr(), annot=True, cmap='summer')
+plt.title('Correlation of stock return')
+
+plt.subplot(2, 2, 2)
+sns.heatmap(closing_df.corr(), annot=True, cmap='summer')
+plt.title('Correlation of stock closing price')
+```
+
+Just like we suspected in our PairPlot we see here numerically and visually that Microsoft and Amazon had the strongest correlation of daily stock return. It's also interesting to see that all the technology comapnies are positively correlated.
 
 
 ## 5.By investing in a specific stock, we are exposing ourselves to a potential level of risk.
