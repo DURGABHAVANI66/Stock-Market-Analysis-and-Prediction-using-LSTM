@@ -1,5 +1,7 @@
 # Stock Market Analysis and Prediction using LSTM
 
+
+## 1. Change in price of the stock overtime
 ``` python
 import pandas as pd
 import numpy as np
@@ -44,17 +46,17 @@ df = pd.concat(company_list, axis=0)
 df.tail(10)
 ```
 
-## Descriptive Statistics of Data 
+###  Descriptive Statistics of Data 
 ``` python  
 AAPL.describe()
 ```
 
-## Information about the data
+### Information about the data
 ``` python
 AAPL.info()
 ```
 
-## Closing Price 
+### Closing Price 
 ``` python
 plt.figure(figsize=(15, 10))
 plt.subplots_adjust(top=1.25, bottom=1.2)
@@ -70,7 +72,7 @@ plt.tight_layout()
 ```
 
 
-## Volume of Sales
+### Volume of Sales
 ``` python
 plt.figure(figsize=(15, 10))
 plt.subplots_adjust(top=1.25, bottom=1.2)
@@ -85,7 +87,7 @@ for i, company in enumerate(company_list, 1):
 plt.tight_layout()
 ```
 
-## Moving average of the stocks 
+## 2. Moving average of the stocks 
 ``` python
 ma_day = [10, 20, 50]
 
@@ -113,6 +115,42 @@ axes[1,1].set_title('AMAZON')
 
 fig.tight_layout()
 ```
+
+
+## 3. The daily return of the stock on average
+
+``` python
+
+for company in company_list:
+    company['Daily Return'] = company['Adj Close'].pct_change()
+
+# Then we'll plot the daily return percentage
+fig, axes = plt.subplots(nrows=2, ncols=2)
+fig.set_figheight(10)
+fig.set_figwidth(15)
+
+AAPL['Daily Return'].plot(ax=axes[0,0], legend=True, linestyle='--', marker='o')
+axes[0,0].set_title('APPLE')
+
+GOOG['Daily Return'].plot(ax=axes[0,1], legend=True, linestyle='--', marker='o')
+axes[0,1].set_title('GOOGLE')
+
+MSFT['Daily Return'].plot(ax=axes[1,0], legend=True, linestyle='--', marker='o')
+axes[1,0].set_title('MICROSOFT')
+
+AMZN['Daily Return'].plot(ax=axes[1,1], legend=True, linestyle='--', marker='o')
+axes[1,1].set_title('AMAZON')
+
+fig.tight_layout()
+
+
+```
+
+
+
+
+
+
 
 
 
