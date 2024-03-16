@@ -209,7 +209,7 @@ fig.tight_layout()
 
 
 
-## By investing in a specific stock, we are exposing ourselves to a potential level of risk.
+## 5.By investing in a specific stock, we are exposing ourselves to a potential level of risk.
 
 There are many ways we can quantify risk, one of the most basic ways using the information we've gathered on daily percentage returns is by comparing the expected return with the standard deviation of the daily returns.
 
@@ -232,7 +232,7 @@ for label, x, y in zip(rets.columns, rets.mean(), rets.std()):
 
 
 
-## Prediction of the closing price stock price of APPLE inc
+## 6.Prediction of the closing price stock price of APPLE inc
 
 
 ``` python  
