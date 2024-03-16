@@ -54,7 +54,20 @@ AAPL.describe()
 AAPL.info()
 ```
 
+## Closing Price 
+``` python
+plt.figure(figsize=(15, 10))
+plt.subplots_adjust(top=1.25, bottom=1.2)
 
+for i, company in enumerate(company_list, 1):
+    plt.subplot(2, 2, i)
+    company['Adj Close'].plot()
+    plt.ylabel('Adj Close')
+    plt.xlabel(None)
+    plt.title(f"Closing Price of {tech_list[i - 1]}")
+    
+plt.tight_layout()
+```
 
 
 
