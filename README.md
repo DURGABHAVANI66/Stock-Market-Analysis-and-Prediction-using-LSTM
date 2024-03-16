@@ -70,8 +70,20 @@ plt.tight_layout()
 ```
 
 
+## Volume of Sales
+``` python
+plt.figure(figsize=(15, 10))
+plt.subplots_adjust(top=1.25, bottom=1.2)
 
-
+for i, company in enumerate(company_list, 1):
+    plt.subplot(2, 2, i)
+    company['Volume'].plot()
+    plt.ylabel('Volume')
+    plt.xlabel(None)
+    plt.title(f"Sales Volume for {tech_list[i - 1]}")
+    
+plt.tight_layout()
+```
 
 
 
