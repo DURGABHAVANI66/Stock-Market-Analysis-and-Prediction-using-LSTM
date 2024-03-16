@@ -49,8 +49,10 @@ df.tail(10)
 AAPL.describe()
 ```
 
-
-
+## Information about the data
+``` python
+AAPL.info()
+```
 
 
 
