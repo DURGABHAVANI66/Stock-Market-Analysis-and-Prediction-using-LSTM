@@ -1,5 +1,7 @@
 # Stock Market Analysis and Prediction using LSTM
 
+
+## 1. Change in price of the stock overtime
 ``` python
 import pandas as pd
 import numpy as np
@@ -44,17 +46,17 @@ df = pd.concat(company_list, axis=0)
 df.tail(10)
 ```
 
-## Descriptive Statistics of Data 
+###  Descriptive Statistics of Data 
 ``` python  
 AAPL.describe()
 ```
 
-## Information about the data
+### Information about the data
 ``` python
 AAPL.info()
 ```
 
-## Closing Price 
+### Closing Price 
 ``` python
 plt.figure(figsize=(15, 10))
 plt.subplots_adjust(top=1.25, bottom=1.2)
@@ -70,111 +72,200 @@ plt.tight_layout()
 ```
 
 
+### Volume of Sales
+``` python
+plt.figure(figsize=(15, 10))
+plt.subplots_adjust(top=1.25, bottom=1.2)
 
+for i, company in enumerate(company_list, 1):
+    plt.subplot(2, 2, i)
+    company['Volume'].plot()
+    plt.ylabel('Volume')
+    plt.xlabel(None)
+    plt.title(f"Sales Volume for {tech_list[i - 1]}")
+    
+plt.tight_layout()
+```
 
+## 2. Moving average of the stocks 
+``` python
+ma_day = [10, 20, 50]
 
+for ma in ma_day:
+    for company in company_list:
+        column_name = f"MA for {ma} days"
+        company[column_name] = company['Adj Close'].rolling(ma).mean()
+        
 
+fig, axes = plt.subplots(nrows=2, ncols=2)
+fig.set_figheight(10)
+fig.set_figwidth(15)
 
+AAPL[['Adj Close', 'MA for 10 days', 'MA for 20 days', 'MA for 50 days']].plot(ax=axes[0,0])
+axes[0,0].set_title('APPLE')
 
+GOOG[['Adj Close', 'MA for 10 days', 'MA for 20 days', 'MA for 50 days']].plot(ax=axes[0,1])
+axes[0,1].set_title('GOOGLE')
 
+MSFT[['Adj Close', 'MA for 10 days', 'MA for 20 days', 'MA for 50 days']].plot(ax=axes[1,0])
+axes[1,0].set_title('MICROSOFT')
 
+AMZN[['Adj Close', 'MA for 10 days', 'MA for 20 days', 'MA for 50 days']].plot(ax=axes[1,1])
+axes[1,1].set_title('AMAZON')
 
+fig.tight_layout()
+```
 
 
+## 3. The daily return of the stock on average
 
+``` python
 
+for company in company_list:
+    company['Daily Return'] = company['Adj Close'].pct_change()
 
+# Then we'll plot the daily return percentage
+fig, axes = plt.subplots(nrows=2, ncols=2)
+fig.set_figheight(10)
+fig.set_figwidth(15)
 
+AAPL['Daily Return'].plot(ax=axes[0,0], legend=True, linestyle='--', marker='o')
+axes[0,0].set_title('APPLE')
 
+GOOG['Daily Return'].plot(ax=axes[0,1], legend=True, linestyle='--', marker='o')
+axes[0,1].set_title('GOOGLE')
 
+MSFT['Daily Return'].plot(ax=axes[1,0], legend=True, linestyle='--', marker='o')
+axes[1,0].set_title('MICROSOFT')
 
+AMZN['Daily Return'].plot(ax=axes[1,1], legend=True, linestyle='--', marker='o')
+axes[1,1  ].set_title('AMAZON')
 
+fig.tight_layout()
 
+plt.figure(figsize=(12, 9))
 
+for i, company in enumerate(company_list, 1):
+    plt.subplot(2, 2, i)
+    company['Daily Return'].hist(bins=50)
+    plt.xlabel('Daily Return')
+    plt.ylabel('Counts')
+    plt.title(f'{company_name[i - 1]}')
+    
+plt.tight_layout()
+```
 
 
+## 4.Corelation between different stocks closing prices 
 
+Correlation is a statistic that measures the degree to which two variables move in relation to each other which has a value that must fall between -1.0 and +1.0. Correlation measures association, but doesn’t show if x causes y or vice versa — or if the association is caused by a third factor[1].
 
+Now what if we wanted to analyze the returns of all the stocks in our list? Let's go ahead and build a DataFrame with all the ['Close'] columns for each of the stocks dataframes.
 
+``` python
+# Grab all the closing prices for the tech stock list into one DataFrame
 
+closing_df = pdr.get_data_yahoo(tech_list, start=start, end=end)['Adj Close']
 
+# Make a new tech returns DataFrame
+tech_rets = closing_df.pct_change()
+tech_rets.head()
+```
 
+Now we can compare the daily percentage return of two stocks to check how correlated. First let's see a sotck compared to itself.
 
+``` python
+# Comparing Google to itself should show a perfectly linear relationship
+sns.jointplot(x='GOOG', y='GOOG', data=tech_rets, kind='scatter', color='seagreen')
+```
 
+``` python
+# We'll use joinplot to compare the daily returns of Google and Microsoft
+sns.jointplot(x='GOOG', y='MSFT', data=tech_rets, kind='scatter')
+```
+So now we can see that if two stocks are perfectly (and positivley) correlated with each other a linear relationship bewteen its daily return values should occur.
 
+Seaborn and pandas make it very easy to repeat this comparison analysis for every possible combination of stocks in our technology stock ticker list. We can use sns.pairplot() to automatically create this plot
+``` python
+# We can simply call pairplot on our DataFrame for an automatic visual analysis 
+# of all the comparisons
 
+sns.pairplot(tech_rets, kind='reg')
+```
+Above we can see all the relationships on daily returns between all the stocks. A quick glance shows an interesting correlation between Google and Amazon daily returns. It might be interesting to investigate that individual comaprison.
 
+While the simplicity of just calling sns.pairplot() is fantastic we can also use sns.PairGrid() for full control of the figure, including what kind of plots go in the diagonal, the upper triangle, and the lower triangle. Below is an example of utilizing the full power of seaborn to achieve this result
 
+``` python
+# Set up our figure by naming it returns_fig, call PairPLot on the DataFrame
+return_fig = sns.PairGrid(tech_rets.dropna())
 
+# Using map_upper we can specify what the upper triangle will look like.
+return_fig.map_upper(plt.scatter, color='purple')
 
+# We can also define the lower triangle in the figure, inclufing the plot type (kde) 
+# or the color map (BluePurple)
+return_fig.map_lower(sns.kdeplot, cmap='cool_d')
 
+# Finally we'll define the diagonal as a series of histogram plots of the daily return
+return_fig.map_diag(plt.hist, bins=30)
+```
 
+``` python
+# Set up our figure by naming it returns_fig, call PairPLot on the DataFrame
+returns_fig = sns.PairGrid(closing_df)
 
+# Using map_upper we can specify what the upper triangle will look like.
+returns_fig.map_upper(plt.scatter,color='purple')
 
+# We can also define the lower triangle in the figure, inclufing the plot type (kde) or the color map (BluePurple)
+returns_fig.map_lower(sns.kdeplot,cmap='cool_d')
 
+# Finally we'll define the diagonal as a series of histogram plots of the daily return
+returns_fig.map_diag(plt.hist,bins=30)
+```
+Finally, we could also do a correlation plot, to get actual numerical values for the correlation between the stocks' daily return values. By comparing the closing prices, we see an interesting relationship between Microsoft and Apple.
 
 
+``` python
+plt.figure(figsize=(12, 10))
 
+plt.subplot(2, 2, 1)
+sns.heatmap(tech_rets.corr(), annot=True, cmap='summer')
+plt.title('Correlation of stock return')
 
+plt.subplot(2, 2, 2)
+sns.heatmap(closing_df.corr(), annot=True, cmap='summer')
+plt.title('Correlation of stock closing price')
+```
 
+Just like we suspected in our PairPlot we see here numerically and visually that Microsoft and Amazon had the strongest correlation of daily stock return. It's also interesting to see that all the technology comapnies are positively correlated.
 
 
+## 5.By investing in a specific stock, we are exposing ourselves to a potential level of risk.
 
+There are many ways we can quantify risk, one of the most basic ways using the information we've gathered on daily percentage returns is by comparing the expected return with the standard deviation of the daily returns.
 
+``` python
+rets = tech_rets.dropna()
 
+area = np.pi * 20
 
+plt.figure(figsize=(10, 8))
+plt.scatter(rets.mean(), rets.std(), s=area)
+plt.xlabel('Expected return')
+plt.ylabel('Risk')
 
+for label, x, y in zip(rets.columns, rets.mean(), rets.std()):
+    plt.annotate(label, xy=(x, y), xytext=(50, 50), textcoords='offset points', ha='right', va='bottom', 
+                 arrowprops=dict(arrowstyle='-', color='blue', connectionstyle='arc3,rad=-0.3'))
+```
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Prediction of the closing price stock price of APPLE inc
+## 6.Prediction of the closing price stock price of APPLE inc
 
 
 ``` python  
