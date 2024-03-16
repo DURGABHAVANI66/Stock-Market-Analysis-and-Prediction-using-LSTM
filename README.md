@@ -164,6 +164,14 @@ tech_rets = closing_df.pct_change()
 tech_rets.head()
 ```
 
+### Exploring the Relationship Between Daily Return Percentage for Google Stock
+
+``` python
+sns.jointplot(x='GOOG', y='GOOG', data=tech_rets, kind='scatter', color='seagreen')
+```
+
+
+
 
 
 
