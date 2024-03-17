@@ -149,6 +149,10 @@ fig.tight_layout()
 
 ## 3. The daily return of the stock on average
 
+ 
+The provided code calculates the daily return percentage for each tech company's stock prices and then generates visualizations to illustrate the distribution of the daily returns as histograms. It first computes the daily return percentage for each company's adjusted close prices and then creates a 2x2 grid of subplots to display the daily return percentages for each tech company, along with their respective stock symbols. Next, it plots histograms of the daily return percentages for each company in a single 2x2 grid, effectively comparing the distribution of the daily returns across the selected tech companies. Finally, adjustments are made to ensure clear labeling and a well-structured layout, facilitating an effective comparison of the daily return distributions.
+
+
 ``` python
 
 for company in company_list:
