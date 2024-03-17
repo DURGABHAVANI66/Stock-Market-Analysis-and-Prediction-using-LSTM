@@ -11,6 +11,13 @@ In conclusion, stock market analysis and prediction using LSTM represents an imp
 </p>
 
 ## 1. Change in price of the stock overtime
+
+
+It imports necessary libraries and sets up the necessary configurations for visualizations and data retrieval.
+It retrieves historical stock data for the companies listed in the tech_list  from Yahoo Finance using the pandas_datareader.
+and  stores the retrieved stock data for each company in separate variables then assigns a corresponding company name to each dataset. The data is then concatenated into a single dataframe, df, for combined analysis.
+
+
 ``` python
 import pandas as pd
 import numpy as np
@@ -54,13 +61,6 @@ for company, com_name in zip(company_list, company_name):
 df = pd.concat(company_list, axis=0)
 df.tail(10)
 ```
-
-It imports necessary libraries and sets up the necessary configurations for visualizations and data retrieval.
-It retrieves historical stock data for the companies listed in the tech_list  from Yahoo Finance using the pandas_datareader.
-and  stores the retrieved stock data for each company in separate variables then assigns a corresponding company name to each dataset. The data is then concatenated into a single dataframe, df, for combined analysis.
-
-
-
 
 ###  Descriptive Statistics of Data 
 ``` python  
