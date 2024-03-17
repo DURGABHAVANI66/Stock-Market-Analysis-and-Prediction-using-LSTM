@@ -114,6 +114,10 @@ plt.tight_layout()
 ```
 
 ## 2. Moving average of the stocks 
+
+The provided code computes the moving averages for the adjusted close prices of the specified tech companies   over varying window periods (10, 20, and 50 days). Subsequently, it creates a 2x2 grid of subplots, each displaying the adjusted close prices alongside the computed moving averages for these different companies. The subplots are arranged to provide a comparative analysis of the adjusted close prices and their respective moving averages over the specified window periods for each tech company. Adjustments are made to ensure clear labeling and a well-structured layout, facilitating an effective visual assessment of the moving averages across the different companies.
+
+
 ``` python
 ma_day = [10, 20, 50]
 
