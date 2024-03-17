@@ -300,7 +300,7 @@ for label, x, y in zip(rets.columns, rets.mean(), rets.std()):
 
 
 ## 6.Prediction of the closing price stock price of APPLE inc
-
+The provided code conducts a series of crucial tasks to develop and assess a Long Short-Term Memory (LSTM) model tailored for predicting stock prices, specifically for Apple Inc. (AAPL). Commencing with the retrieval and visualization of historical stock price data sourced from Yahoo Finance, the code prepares the data for modeling. Employing Min-Max scaling, the code preprocesses the stock price information and establishes a training dataset encompassing 95% of the available data. Subsequently, the code defines, compiles, and trains an LSTM model via the Keras library, utilizing the Adam optimizer and mean squared error loss function. It then proceeds to prepare the testing dataset, make predictions employing the trained model, and evaluate performance using the root mean squared error (RMSE). Lastly, the code integrates a visualization component, allowing for the comparative depiction of actual and predicted stock prices. Overall, this comprehensive workflow effectively harnesses LSTM technology for the precise and efficient prediction of AAPL stock prices.
 
 ``` python  
 # Get the stock quote
