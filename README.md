@@ -6,9 +6,7 @@ Key considerations in this domain include data preprocessing to ensure optimal L
 
 In conclusion, stock market analysis and prediction using LSTM represents an impactful application of machine learning in the financial domain. While LSTM models can offer valuable insights into potential stock price trends, they should be used in conjunction with other fundamental and technical analysis methods for well-informed investment decisions.
 
-<p align="centre">
-    <img src="https://github.com/DURGABHAVANI66/Stock-Market-Analysis-and-Prediction-using-LSTM/assets/103325696/1e7ab2d0-3296-496f-b25c-fbdb897f2ad9" />
-</p>
+
 
 ## 1. Change in price of the stock overtime
 
@@ -425,19 +423,15 @@ valid
 
 
 ## Summary
+ The above project and the code   conducts a comprehensive analysis of stock market data for tech companies, encompassing data retrieval from Yahoo Finance and the creation of visualizations. It involves the retrieval of stock data, combined with the visualization of adjusted closing prices and sales volume for Apple, Google, Microsoft, and Amazon. Moving averages for different periods and daily return percentages are computed and displayed through various visualizations, including line plots, histograms, and correlation heatmaps. Additionally, the code utilizes the LSTM model to predict Apple Inc.'s stock prices, encompassing data preprocessing, model building, training, error evaluation, and visualization of model performance. Overall, the code provides a detailed exploration of stock data analysis and includes advanced techniques for stock price prediction using LSTM technology.
 
-In this notebook, you discovered and explored stock data.
+<p align='centre'>
 
-Specifically, you learned:
+<img src="https://github.com/DURGABHAVANI66/Stock-Market-Analysis-and-Prediction-using-LSTM/assets/103325696/79ad1c34-dec5-4fbb-abed-24538b5b5ffe" />
+</p>
 
-* How to load stock market data from the YAHOO Finance website using yfinance.
-- How to explore and visualize time-series data using Pandas, Matplotlib, and Seaborn.
-* How to measure the correlation between stocks.
-+ How to measure the risk of investing in a particular stock.
 
-  
 
-Do you have any questions? Ask your questions in the comments below and I will do my best to answer.
 
 
 
