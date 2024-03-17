@@ -379,7 +379,7 @@ plt.ylabel('Risk')
 
 for label, x, y in zip(rets.columns, rets.mean(), rets.std()):
     plt.annotate(label, xy=(x, y), xytext=(50, 50), textcoords='offset points', ha='right', va='bottom', 
-                 arrowprops=dict(arrowstyle='-', color='blue', connectionstyle='arc3,rad=-0.3'))
+                 arrowprops=dict(arrowstyle='-', color='red', connectionstyle='arc3,rad=-0.3'))
 ```
 
 <p align ='centre'> 
