@@ -300,6 +300,9 @@ for label, x, y in zip(rets.columns, rets.mean(), rets.std()):
                  arrowprops=dict(arrowstyle='-', color='blue', connectionstyle='arc3,rad=-0.3'))
 ```
 
+<p align ='centre'> 
+<img src ="https://github.com/DURGABHAVANI66/Stock-Market-Analysis-and-Prediction-using-LSTM/assets/103325696/1c209b05-3202-4e3b-a325-679d05ea9deb"/>
+</p>
 
 
 
