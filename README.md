@@ -262,6 +262,7 @@ tech_rets.head()
 ```
 
 Now we can compare the daily percentage return of two stocks to check how correlated. First let's see a sotck compared to itself.
+
 `comparing Google to itself`
 ``` python
 sns.jointplot(x='GOOG', y='GOOG', data=tech_rets, kind='scatter', color='seagreen')
