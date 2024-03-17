@@ -63,6 +63,8 @@ df.tail(10)
 ```
 
 ###  Descriptive Statistics of Data 
+
+The code AAPL.describe() is computing descriptive statistics for the stock data of Apple Inc. (AAPL) and displaying the summary output, providing insights into the distribution and characteristics of the data. 
 ``` python  
 AAPL.describe()
 ```
