@@ -70,6 +70,8 @@ AAPL.describe()
 ```
 
 ### Information about the data
+The code AAPL.info() is displaying essential information about the stock data for Apple Inc. (AAPL), including the data type, range of values, and memory usage. This provides insights into the structure and completeness of the dataset, such as the presence of missing values, and allows for a quick assessment of the data's quality and integrity.
+
 ``` python
 AAPL.info()
 ```
