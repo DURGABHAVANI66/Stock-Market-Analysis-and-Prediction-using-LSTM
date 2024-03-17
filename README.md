@@ -17,6 +17,39 @@ It imports necessary libraries and sets up the necessary configurations for visu
 It retrieves historical stock data for the companies listed in the tech_list  from Yahoo Finance using the pandas_datareader.
 and  stores the retrieved stock data for each company in separate variables then assigns a corresponding company name to each dataset. The data is then concatenated into a single dataframe, df, for combined analysis.
 
+``` python
+pip install pandas
+```
+
+``` python
+pip install pandas_datareader
+```
+
+``` python
+pip install numpy
+```
+
+``` python
+pip install keras
+```
+
+``` python
+pip install tensorflow
+```
+
+``` python
+pip install --upgrade pandas numpy keras tensorflow
+```
+
+``` text
+installing the libraries in jupyter notebook use -----> %pip install
+installing in colab use -----> !pip install
+installing through the terminal use -----> pip install
+```
+`Importing the Data form yfinance `
+``` python
+pip install -q yfinance
+```
 
 ``` python
 import pandas as pd
