@@ -55,6 +55,13 @@ df = pd.concat(company_list, axis=0)
 df.tail(10)
 ```
 
+It imports necessary libraries and sets up the necessary configurations for visualizations and data retrieval.
+It retrieves historical stock data for the companies listed in the tech_list  from Yahoo Finance using the pandas_datareader.
+and  stores the retrieved stock data for each company in separate variables then assigns a corresponding company name to each dataset. The data is then concatenated into a single dataframe, df, for combined analysis.
+
+
+
+
 ###  Descriptive Statistics of Data 
 ``` python  
 AAPL.describe()
