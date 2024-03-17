@@ -6,7 +6,9 @@ Key considerations in this domain include data preprocessing to ensure optimal L
 
 In conclusion, stock market analysis and prediction using LSTM represents an impactful application of machine learning in the financial domain. While LSTM models can offer valuable insights into potential stock price trends, they should be used in conjunction with other fundamental and technical analysis methods for well-informed investment decisions.
 
-
+<p align="centre">
+    <img src="https://github.com/DURGABHAVANI66/Stock-Market-Analysis-and-Prediction-using-LSTM/assets/103325696/1e7ab2d0-3296-496f-b25c-fbdb897f2ad9" />
+</p>
 
 ## 1. Change in price of the stock overtime
 
