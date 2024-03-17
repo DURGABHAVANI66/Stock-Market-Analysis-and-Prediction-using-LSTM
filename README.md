@@ -17,6 +17,39 @@ It imports necessary libraries and sets up the necessary configurations for visu
 It retrieves historical stock data for the companies listed in the tech_list  from Yahoo Finance using the pandas_datareader.
 and  stores the retrieved stock data for each company in separate variables then assigns a corresponding company name to each dataset. The data is then concatenated into a single dataframe, df, for combined analysis.
 
+``` python
+pip install pandas
+```
+
+``` python
+pip install pandas_datareader
+```
+
+``` python
+pip install numpy
+```
+
+``` python
+pip install keras
+```
+
+``` python
+pip install tensorflow
+```
+
+``` python
+pip install --upgrade pandas numpy keras tensorflow
+```
+
+``` text
+installing the libraries in jupyter notebook use -----> %pip install
+installing in colab use -----> !pip install
+installing through the terminal use -----> pip install
+```
+`Importing the Data form yfinance `
+``` python
+pip install -q yfinance
+```
 
 ``` python
 import pandas as pd
@@ -64,16 +97,33 @@ df.tail(10)
 
 ###  Descriptive Statistics of Data 
 
-The code AAPL.describe() is computing descriptive statistics for the stock data of Apple Inc. (AAPL) and displaying the summary output, providing insights into the distribution and characteristics of the data. 
+The code .describe() is computing descriptive statistics for the stock data of company Inc. and displaying the summary output, providing insights into the distribution and characteristics of the data. 
 ``` python  
 AAPL.describe()
 ```
-
+```python
+GOOG.describe()
+```
+``` python
+MSFT.describe()
+```
+``` python
+AMZN.describe()
+```
 ### Information about the data
 The code AAPL.info() is displaying essential information about the stock data for Apple Inc. (AAPL), including the data type, range of values, and memory usage. This provides insights into the structure and completeness of the dataset, such as the presence of missing values, and allows for a quick assessment of the data's quality and integrity.
 
 ``` python
 AAPL.info()
+```
+``` python
+GOOG.info()
+```
+``` python
+MSFT.info()
+```
+``` python
+AMZN.info()
 ```
 
 ### Closing Price  
