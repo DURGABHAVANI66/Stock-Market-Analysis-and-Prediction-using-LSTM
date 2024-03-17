@@ -352,7 +352,7 @@ Finally, we could also do a correlation plot, to get actual numerical values for
 plt.figure(figsize=(12, 10))
 
 plt.subplot(2, 2, 1)
-sns.heatmap(tech_rets.corr(), annot=True, cmap='summer')
+sns.heatmap(tech_rets.corr(), annot=True, cmap='winter')
 plt.title('Correlation of stock return')
 
 plt.subplot(2, 2, 2)
