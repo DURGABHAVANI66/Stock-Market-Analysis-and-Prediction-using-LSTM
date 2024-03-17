@@ -1,12 +1,9 @@
 # Stock Market Analysis and Prediction using LSTM
-``` python
 Stock Market Analysis and Prediction Using LSTM involves leveraging Long Short-Term Memory (LSTM), a type of recurrent neural network (RNN), for the analysis and prediction of stock prices. LSTM is particularly advantageous for processing sequential data such as time-series stock market information. The process entails using historical stock prices, trading volumes, market indicators, and other financial data as input for training the LSTM model. By learning complex patterns and dependencies within the historical data, the LSTM model becomes capable of forecasting future stock prices, thereby assisting investors, traders, and financial analysts in making informed decisions. It is important to note, however, that while LSTM models can provide valuable insights, their predictive accuracy may be impacted by market volatility, unforeseen events, and other external factors.
 
 Key considerations in this domain include data preprocessing to ensure optimal LSTM performance, feature engineering for selecting relevant indicators, model evaluation using metrics such as Mean Squared Error (MSE), Root Mean Squared Error (RMSE), and Mean Absolute Error (MAE), regularization techniques to prevent overfitting, and continuous model monitoring and retraining to adapt to changing market conditions and improve prediction accuracy over time.
 
 In conclusion, stock market analysis and prediction using LSTM represents an impactful application of machine learning in the financial domain. While LSTM models can offer valuable insights into potential stock price trends, they should be used in conjunction with other fundamental and technical analysis methods for well-informed investment decisions.
-```
-
 
 ## 1. Change in price of the stock overtime
 ``` python
