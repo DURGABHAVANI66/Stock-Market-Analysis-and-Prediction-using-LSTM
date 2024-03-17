@@ -96,6 +96,9 @@ plt.tight_layout()
 
 
 ### Volume of Sales
+
+The provided code creates a 2x2 grid layout using matplotlib, displaying the volume data for each of the specified technology companies It iterates through the company_list and generates a separate subplot for each company, where the volume of shares traded is plotted over time. Each subplot is labeled with the corresponding company's name and provides a visual comparison of sales volumes. Adjustments are made to ensure that the subplots are clearly labeled, and the layout is well-structured for optimal readability and analysis.
+
 ``` python
 plt.figure(figsize=(15, 10))
 plt.subplots_adjust(top=1.25, bottom=1.2)
