@@ -93,7 +93,9 @@ for i, company in enumerate(company_list, 1):
     
 plt.tight_layout()
 ```
-
+<p align='centre'> 
+< img src= "https://github.com/DURGABHAVANI66/Stock-Market-Analysis-and-Prediction-using-LSTM/assets/103325696/0ba78041-f56e-4a25-acff-85ef8ee51213" />
+</p>
 
 ### Volume of Sales
 
