@@ -76,7 +76,10 @@ The code AAPL.info() is displaying essential information about the stock data fo
 AAPL.info()
 ```
 
-### Closing Price 
+### Closing Price  
+The provided code segment creates a single figure with a 2x2 grid layout using matplotlib, where each subplot visualizes the adjusted close prices of a different technology company (AAPL, GOOG, MSFT, AMZN). The for loop iterates through the company_list and creates a subplot for each company, displaying its adjusted close price data over time. The visualization allows for a comparative analysis of the closing prices of the selected technology stocks. Adjustments are made to ensure the subplots are clearly labeled, and the layout is well-structured to enhance readability and comprehension.
+
+
 ``` python
 plt.figure(figsize=(15, 10))
 plt.subplots_adjust(top=1.25, bottom=1.2)
