@@ -263,15 +263,47 @@ tech_rets.head()
 
 Now we can compare the daily percentage return of two stocks to check how correlated. First let's see a sotck compared to itself.
 
+`comparing Google to itself`
 ``` python
-# Comparing Google to itself should show a perfectly linear relationship
 sns.jointplot(x='GOOG', y='GOOG', data=tech_rets, kind='scatter', color='seagreen')
 ```
-
+`comparing Amazon to itself`
 ``` python
-# We'll use joinplot to compare the daily returns of Google and Microsoft
-sns.jointplot(x='GOOG', y='MSFT', data=tech_rets, kind='scatter')
+sns.jointplot(x='AMZN', y='AMZN', data=tech_rets, kind='scatter', color='seagreen')
 ```
+`comparing Microsoft to itself`
+``` python
+sns.jointplot(x='MSFT', y='MSFT', data=tech_rets, kind='scatter', color='seagreen')
+```
+`comparing Apple to itself`
+``` python
+sns.jointplot(x='AAPL', y='AAPL', data=tech_rets, kind='scatter', color='seagreen')
+```
+`comparing the daily returns of Google and Microsoft`
+``` python
+sns.jointplot(x='GOOG', y='MSFT', data=tech_rets, kind='scatter',color='red')
+```
+`comparing the daily returns of Google and Apple`
+``` python
+sns.jointplot(x='GOOG', y='AAPL', data=tech_rets, kind='scatter',color='blue')
+```
+`comparing the daily returns of Google and Amazon`
+``` python
+sns.jointplot(x='GOOG', y='AMZN', data=tech_rets, kind='scatter',color='seagreen')
+```
+`comparing the daily returns of Apple and Amazon`
+``` python
+sns.jointplot(x='AAPL', y='AMZN', data=tech_rets, kind='scatter',color='orange')
+```
+`comparing the daily returns of Apple and Microsoft`
+``` python
+sns.jointplot(x='AAPL', y='MSFT', data=tech_rets, kind='scatter',color='purple')
+```
+` comparing the daily returns of Amazon and Microsoft`
+``` python
+sns.jointplot(x='AMZN', y='MSFT', data=tech_rets, kind='scatter',color='brown')
+```
+
 So now we can see that if two stocks are perfectly (and positivley) correlated with each other a linear relationship bewteen its daily return values should occur.
 
 Seaborn and pandas make it very easy to repeat this comparison analysis for every possible combination of stocks in our technology stock ticker list. We can use sns.pairplot() to automatically create this plot
@@ -320,7 +352,7 @@ Finally, we could also do a correlation plot, to get actual numerical values for
 plt.figure(figsize=(12, 10))
 
 plt.subplot(2, 2, 1)
-sns.heatmap(tech_rets.corr(), annot=True, cmap='summer')
+sns.heatmap(tech_rets.corr(), annot=True, cmap='winter')
 plt.title('Correlation of stock return')
 
 plt.subplot(2, 2, 2)
